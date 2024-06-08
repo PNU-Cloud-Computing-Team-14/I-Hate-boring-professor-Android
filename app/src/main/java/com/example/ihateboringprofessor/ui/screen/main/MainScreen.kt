@@ -1,4 +1,4 @@
-package com.example.ihateboringprofessor.ui
+package com.example.ihateboringprofessor.ui.screen.main
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
