@@ -9,13 +9,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.ihateboringprofessor.ui.component.CameraAlertDialog
 import com.example.ihateboringprofessor.ui.component.CameraComponent
 import com.example.ihateboringprofessor.ui.component.CheckPermissionComponent
+import androidx.navigation.NavHostController
 
 @Composable
 fun CameraScreen(
     state: CameraState,
-    onEvent: (CameraEvent) -> Unit
+    onEvent: (CameraEvent) -> Unit,
+    navController: NavHostController
 ) {
     CheckPermissionComponent { permit ->
         onEvent(CameraEvent.GrantCameraPermission(permit))
@@ -32,7 +35,7 @@ fun CameraScreen(
                 .fillMaxWidth()
                 .height(50.dp)
                 .background(Color.DarkGray),
-            Alignment.Center
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "감정 분석 중",
@@ -72,6 +75,13 @@ fun CameraScreen(
                 contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator()
+            }
+        }
+
+        if (state.showDialog) {
+            CameraAlertDialog {
+                // TODO: 서버와 통신 후 로컬에 결과 저장
+                navController.popBackStack(navController.graph.startDestinationId, inclusive = false)
             }
         }
     }

@@ -46,7 +46,8 @@ class MainActivity : ComponentActivity() {
                             val state = viewModel.state.collectAsStateWithLifecycle().value
                             CameraScreen(
                                 state = state,
-                                onEvent = viewModel::onEvent
+                                onEvent = viewModel::onEvent,
+                                navController = navController
                             )
                         }
                     }

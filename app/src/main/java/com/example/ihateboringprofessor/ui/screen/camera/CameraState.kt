@@ -8,5 +8,6 @@ data class CameraState(
     val selfCam: Boolean = false,
     val capture: Boolean = false,
     val imageBitmap: Bitmap? = null,
-    val logString: String = ""
+    val logString: String = "",
+    val showDialog: Boolean = false
 )

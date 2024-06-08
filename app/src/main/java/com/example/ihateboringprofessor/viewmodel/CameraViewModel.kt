@@ -34,10 +34,12 @@ class CameraViewModel @Inject constructor() : ViewModel() {
 
     private fun startAutoCapture() {
         viewModelScope.launch {
-            while (true) {
+            repeat(6) {
                 delay(10000) // 10초 대기
                 captureImage()
             }
+            // 6번 반복 후 다이얼로그 표시
+            showDialog(true)
         }
     }
 
@@ -55,11 +57,20 @@ class CameraViewModel @Inject constructor() : ViewModel() {
 
     private fun getImageBitmap(bitmap: Bitmap) {
         _state.update { it.copy(imageBitmap = bitmap) }
-        // TODO: 서버로 이미지 전송 로직 추가
-        println("전송")
+        uploadImage(bitmap)
+    }
+
+    private fun uploadImage(bitmap: Bitmap) {
+        // TODO: 서버로 이미지 전송 API 추가
+        println("이미지 업로드 호출")
     }
 
     private fun grantCameraPermission(permission: Boolean) {
         _state.update { it.copy(permitCamera = permission) }
+    }
+
+    // 다이얼로그 호출 함수
+    fun showDialog(show: Boolean) {
+        _state.update { it.copy(showDialog = show) }
     }
 }

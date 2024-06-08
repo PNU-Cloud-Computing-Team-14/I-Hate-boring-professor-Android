@@ -146,6 +146,7 @@ fun CalendarDay(
             .size(30.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(
+                // TODO : 여기서 배경을 바꿀 수 있을 겁니다.
                 when {
                     date == today -> Color.Red
                     isSelected -> Color.Black
