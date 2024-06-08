@@ -17,6 +17,11 @@ class MainViewModel : ViewModel() {
     private val _pin = MutableStateFlow("")
     val pin: StateFlow<String> = _pin
 
+    fun onScreenLoad() {
+        // TODO: 메인스크린이 나왔을 때, 지금까지의 결과를 불러오는 API호출 후 결과 표시
+        println("메인 화면 호출 : 결과 API 연동 할 것")
+    }
+
     fun selectDate(date: LocalDate) {
         viewModelScope.launch {
             _selectedDate.emit(date)

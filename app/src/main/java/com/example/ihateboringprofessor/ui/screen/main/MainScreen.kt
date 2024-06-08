@@ -1,4 +1,4 @@
-package com.example.ihateboringprofessor.ui
+package com.example.ihateboringprofessor.ui.screen.main
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -14,6 +14,11 @@ import com.example.ihateboringprofessor.viewmodel.MainViewModel
 
 @Composable
 fun MainScreen(mainViewModel: MainViewModel, navController: NavHostController) {
+
+    LaunchedEffect(Unit) {
+        mainViewModel.onScreenLoad()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
